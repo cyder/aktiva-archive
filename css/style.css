@@ -1,0 +1,600 @@
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-appearance: none;
+}
+
+body {
+	width: 100%;
+	font-family: "Lato", "Lucida Grande", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Meiryo", "メイリオ", sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    color: #fff;
+    background-color: #519bbe;
+    
+}
+
+header {
+	width: 100%; 
+	height: 56px;
+	background-color: rgba(98,183,226,0.93);
+	color: #fff;
+	font-size: 16px;
+	line-height: 16px;
+	position: fixed;
+	top: 0;
+	margin-bottom: 116px;
+	z-index:1;
+}
+
+header img {
+	margin-top: 4px;
+	height: 32px;
+}
+header h1 {
+	margin-bottom: 32px;
+}
+
+header a {
+	/*display:block;*/
+	margin-bottom: -20px;
+}
+
+#header-back {
+	width: 100%;
+	height: 56px;
+	background-color: rgba(98,183,226,1);; 
+}
+
+.siteheader {
+	padding: 8px 16px;
+}
+
+#head-left {
+	float: left;
+}
+
+#head-right {
+	float: right;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+p {
+	font-size: 16px;
+	line-height: 28px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+.icon {
+	font-size: 32px;
+	margin-right: 8px;
+}
+
+#tweets {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 736px;
+}
+
+.twitter-tweet {
+	margin: 16px auto !important;
+	width: 100% !important;
+	max-width: 480px !important;
+}
+
+@media screen and (min-width: 784px) {
+	.twitter-tweet {
+		margin: 16px 16px 16px 0! important;
+		width: 360px !important;
+		float: left !important;
+	}
+
+	.twitter-tweet:nth-of-type(2n) {
+		margin: 16px 0 16px 0 !important;
+	}
+}
+
+.wrap {
+    max-width: 996px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    overflow: hidden;
+    zoom: 1;
+    position: relative;
+}
+
+.wrap a {
+	display: :block;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.left_content {
+	float: left;
+	width: 48%;
+	margin-right: 4%;
+	overflow:hidden;
+   	zoom:1;
+}
+
+.right_content {
+	float: left;
+	width: 48%;
+	overflow:hidden;
+	zoom:1;
+}
+
+.left_menu {
+	float: left;
+	width: 28%;
+	margin-right: 8%;
+	overflow:hidden;
+   	zoom:1;
+}
+
+.right_menu {
+	float: left;
+	width: 64%;
+	overflow:hidden;
+	zoom:1;
+}
+
+@media screen and (min-width: 800px) {
+	.left_menu {
+		width: 20%;
+	}
+
+	.right_menu {
+		width: 72%;
+	}
+}
+
+.left_menu_music {
+	float: left;
+	width: 42%;
+	margin-right: 8%;
+	overflow:hidden;
+   	zoom:1;
+}
+
+.right_menu_music {
+	float: left;
+	width: 50%;
+	overflow:hidden;
+	zoom:1;
+}
+
+@media screen and (min-width: 800px) {
+	.left_menu_music {
+		width: 40%;
+	}
+
+	.right_menu_music {
+		width: 52%;
+	}
+}
+
+.soldout_menu {
+	color: #ddd;
+}
+
+.soldout {
+	color: #FFC40D;
+}
+
+.each_menu {
+	background-color: #519bbe;
+	border-bottom: 1px solid #fff;
+}
+
+.each_menu:last-of-type {
+	border-bottom: 0px solid #fff;
+}
+
+#menu_icon {
+	background-color: #5caba6;
+	text-align: center;
+}
+
+#menu_icon .wrap img {
+	width: 40%;
+	max-width: 320px;
+	margin-bottom: 32px;
+}
+
+#menu_info {
+	background-color: #16a086;
+}
+
+#menu_buttons {
+	background-color: #5caba6;
+}
+
+#buttons {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 320px;
+}
+
+#buttons .twin {
+	float: left;
+	width: 42%;
+	margin: 0 2%;
+	padding: 4% 2%;
+	text-align: center;
+	font-size: 16px;
+	line-height: 24px;
+	margin-bottom: 16px;
+}
+
+#likes_button {
+	overflow: hidden;
+	background-color: #169086;
+	border: none;
+	width: 86%;
+	margin-left: 2%;
+	color: #fff;
+	font-size: 24px;
+	padding: 16px;
+	text-align: center;
+}
+
+#report_button {
+	background-color: #cf3c22;
+}
+
+#tweet_button {
+	background-color: #da532c;
+}
+
+#menu_tweets {
+	background-color: #16a086;
+}
+
+#camera_button {
+	background-color: #169086;
+}
+
+.report {
+	font-size: 40px;
+	margin-bottom: 48px;
+}
+
+#soldout_button {
+	background-color: #da532c;
+}
+
+#onsell_button {
+	background-color: #169086;
+}
+
+#soldout_button {
+	border: none;
+	width: 100%;
+	color: #fff;
+	font-size: 24px;
+	padding: 16px;
+	text-align: center;
+	max-width: 560px;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 32px;
+}
+
+#onsell_button {
+	border: none;
+	width: 100%;
+	color: #fff;
+	font-size: 24px;
+	padding: 16px;
+	text-align: center;
+	max-width: 560px;
+	display: block;
+	margin: 0 auto;
+}
+
+#tweet_button {
+	font-size: 24px;
+	padding: 16px;
+	text-align: center;
+	max-width: 560px;
+	margin: 0 auto;
+	margin-bottom: 32px;
+	display: block;
+}
+
+#camera_button {
+/*	width: 100%;*/
+	font-size: 24px;
+	padding: 16px;
+	text-align: center;
+	max-width: 560px;
+	margin: 0 auto;
+	margin-bottom: 32px;
+	display: block;
+}
+
+#camera_button input[type="file"] {
+  opacity: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+	margin: 0 auto;
+  font-size: 100px;
+  cursor: pointer;
+}
+
+textarea {  
+	width: 100%;
+	max-width: 592px;
+	height: 160px;
+	font-size: 16px;
+    resize: none;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 40px;  
+}  
+
+.icon_camera_button {
+	font-size: 24px;
+	margin-right: 8px;
+}
+
+.icon_tweet_button {
+	font-size: 30px;
+	margin-right: 4px;
+}
+
+#day_next {
+	float: left;
+	margin-left: 8px;
+}
+
+#day_prev {
+	float: left;
+	margin-right: 8px;
+}
+
+#prev {
+	margin-right: 8px;
+}
+/*
+@media screen and (max-width: 352px) {
+	#day_prev, #head-left, #day_next, #head-right {
+		font-size: 14px;
+		line-height: 24px;
+	}
+
+	header {
+		height: 72px;
+		margin-bottom: 88px;
+	}
+
+	#header-back {
+		height: 72px;
+	}
+
+	header img {
+		height: 24px;
+	}
+}
+*/
+
+.err {
+	margin-bottom: 8px;
+	text-align: center;
+	color: #FFC40D;
+}
+
+.logout {
+	background-color: #169086;
+	text-align:center;
+	width: 100%;
+	max-width: 592px;
+	margin: 0 auto;
+}
+
+.twi-none {
+	margin-top: 16px;
+	font-size: 20px;
+}
+
+#logout_button {
+	overflow: hidden;
+	border: none;
+	color: #fff;
+	font-size: 24px;
+	padding: 16px;
+	text-align: center;
+	display: inline-block;
+}
+
+.login {
+	background-color: #169086;
+	text-align:center;
+	width: 100%;
+	max-width: 592px;
+	margin: 0 auto;
+	margin-top: 24px;
+}
+
+
+
+
+
+button {
+	display: block;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
+.siteheader button {
+	width: 48px;
+	height: 48px;
+	background: none;
+	position: absolute;
+	right: 0;
+	bottom: 100%;
+	color: #f8f8f8;
+	font-size: 32px;
+	line-height: 40px;
+	display: block;
+}
+
+.siteheader button:before,
+.siteheader button:after,
+.siteheader button span {
+	margin: -1px 8px 0;
+	width: 32px;
+	position: absolute;
+	display: block;
+	border-top: solid 2px #f0f0f0;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.siteheader button:before{
+	content: "";
+	top: 30%;
+}
+
+.siteheader button:after{
+	content: "";
+	top: 70%;
+}
+
+.siteheader button span {
+	top: 50%;
+}
+
+.siteheader button:active {
+	background-color: #b7d5cd;
+}
+
+.siteheader .opened button:before {
+	top: 50%;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.siteheader .opened button:after {
+	top: 50%;
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.siteheader .opened button span {
+	opacity: 0;
+}
+
+.siteheader nav {
+	width: 100%;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	color: #f8f8f8;
+	background-color: rgba(98,183,226,0.93);
+}
+
+.siteheader nav ul {
+	width: 100%;
+	max-height: 0;
+	border-top: solid 1px rgba(0,0,0,0);
+	overflow: hidden;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.siteheader nav.opened ul {
+	max-height: 200px;
+	border-color: #f8f8f8;
+}
+
+.siteheader nav li {
+	height: 40px;
+}
+
+.siteheader nav li a {
+	padding: 0 16px;
+	width: 100%;
+	height: 100%;
+	line-height: 40px;
+	display: block;
+	color: #f8f8f8;
+}
+
+.siteheader nav li:active {
+	background-color: #FFC40D;
+}
+
+.music_main {
+	margin-bottom: 24px; 
+}
+
+.music_main img {
+	width: 50%;
+	display: block;
+	margin: 0 auto;
+}
+
+.youtube_video {
+  	position: relative;
+  	width: 100%;
+  	padding-top: 56.25%;
+}
+.youtube_video iframe {
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100% !important;
+  	height: 100% !important;
+}
+
+.music_main h1 {
+	text-align: center;
+	margin-bottom: 24px;
+}
+
+input {
+	width: 100%;
+}
+
+input#login {
+	border-style: none;
+	padding: 24px 0;
+	background-color: #62b7e2;
+	color: #fff;
+	font-size: 18px;
+}
+
+.right_menu h1{
+	line-height: 28px;
+	margin-bottom: 16px;
+}
+
+.right_menu p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
