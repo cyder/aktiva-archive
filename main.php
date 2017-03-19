@@ -12,10 +12,10 @@ if (!isset($_SESSION["USERID"])) {
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Mai-Archive</title>
+    <title>Aktiva-Archive</title>
   </head>
   <body>
-  <h1>Mai-Archive</h1>
+  <h1>Aktiva-Archive</h1>
   <!-- ユーザIDにHTMLタグが含まれても良いようにエスケープする -->
   <h2>ようこそ<?=htmlspecialchars($_SESSION["USERID"], ENT_QUOTES); ?>さん</h2><hr />
 
@@ -24,7 +24,7 @@ if (!isset($_SESSION["USERID"])) {
   $db['host'] = "localhost";  // DBサーバのurl
   $db['user'] = "daichi";
   $db['pass'] = "yoshitake";
-  $db['dbname'] = "mai-archive";
+  $db['dbname'] = "aktiva-archive";
 */
 
 

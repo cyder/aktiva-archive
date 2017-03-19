@@ -8,7 +8,7 @@ session_start();
 $db['host'] = "localhost";  // DBサーバのurl
 $db['user'] = "daichi";
 $db['pass'] = "yoshitake";
-$db['dbname'] = "mai-archive";
+$db['dbname'] = "aktiva-archive";
 */
 
   $db['host'] = "host";  // DB sever's url
@@ -28,7 +28,7 @@ if (isset($_POST["login"])) {
     $errorMessage = "ユーザIDが未入力です。";
   } else if (empty($_POST["password"])) {
     $errorMessage = "パスワードが未入力です。";
-  } 
+  }
 
   // ２．ユーザIDとパスワードが入力されていたら認証する
   if (!empty($_POST["userid"]) && !empty($_POST["password"])) {
@@ -70,21 +70,21 @@ if (isset($_POST["login"])) {
       $_SESSION["USERID"] = $_POST["userid"];
       header("Location: list.php");
       exit;
-    } 
+    }
     else {
       // 認証失敗
       $errorMessage = "ユーザIDあるいはセキュリティコードに誤りがあります。";
-    } 
+    }
   } else {
     // 未入力なら何もしない
-  } 
-} 
- 
+  }
+}
+
 ?>
  <!DOCTYPE html>
 <html>
 <head>
-  <title>Mai-Archive</title>
+  <title>Aktiva-Archive</title>
   <meta charset="UTF-8" />
   <meta name="keywords" content="Global Studios, グローバルスタジオ" />
   <meta name="description" content="" />
@@ -95,14 +95,14 @@ if (isset($_POST["login"])) {
   <link rel = "stylesheet" type = "text/css" href = "css/style.css">
 </head>
   <body>
-  <?php 
+  <?php
   echo '
 <header>
     <div class="siteheader shadow1">
       <a href=""><img src="img/logo.png"></a>
       <nav>
         <ul id="menu">
-          <li><a href="">Mai-Archiveについて</a></li>
+          <li><a href="">Aktiva-Archiveについて</a></li>
           <li><a href="login.php">ログインしていません。</a></li>
         </ul>
         <button id="menubutton"><span></span></button>
@@ -114,7 +114,7 @@ if (isset($_POST["login"])) {
   <!-- $_SERVER['PHP_SELF']はXSSの危険性があるので、actionは空にしておく -->
   <!--<form id="loginForm" name="loginForm" action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">-->
   <section class="each_menu"><div class="wrap">
-  <h2>Mai-Card表面のユーザIDと裏面のセキュリティコードを入力してください。</h2><br />
+  <h2>Aktiva-Card表面のユーザIDと裏面のセキュリティコードを入力してください。</h2><br />
   <form id="loginForm" name="loginForm" action="" method="POST">
   <div><?php echo $errorMessage ?></div>
   <label for="userid">ユーザID</label><br /><input type="text" id="userid" name="userid" value="">

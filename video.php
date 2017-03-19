@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mai-Archive</title>
+	<title>Aktiva-Archive</title>
 	<meta charset="UTF-8" />
 	<meta name="keywords" content="Global Studios, グローバルスタジオ" />
  	<meta name="description" content="" />
@@ -19,7 +19,7 @@
   $db['host'] = "localhost";  // DB server's url
   $db['user'] = "daichi";
   $db['pass'] = "yoshitake";
-  $db['dbname'] = "mai-archive";
+  $db['dbname'] = "aktiva-archive";
 */
 
   $db['host'] = "host";  // DB sever's url
@@ -48,7 +48,7 @@ echo '
 				<ul id="menu">
 					<li><a href="">USER ID: '. $userid .'</a></li>
 					<li><a href="">アーカイブリスト</a></li>
-					<li><a href="">Mai-Archiveについて</a></li>
+					<li><a href="">Aktiva-Archiveについて</a></li>
 					<li><a href="logout.php">ログアウト</a></li>
 				</ul>
 				<button id="menubutton"><span></span></button>

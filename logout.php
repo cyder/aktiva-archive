@@ -24,7 +24,7 @@ $_SESSION = array();
 <!doctype html>
 <html>
   <head>
-    <title>Mai-Archive</title>
+    <title>Aktiva-Archive</title>
   <meta charset="UTF-8" />
   <meta name="keywords" content="Global Studios, グローバルスタジオ" />
   <meta name="description" content="" />
@@ -43,7 +43,7 @@ $_SESSION = array();
       <a href=""><img src="img/logo.png"></a>
       <nav>
         <ul id="menu">
-          <li><a href="">Mai-Archiveについて</a></li>
+          <li><a href="">Aktiva-Archiveについて</a></li>
           <li><a href="login.php">ログインしていません。</a></li>
         </ul>
         <button id="menubutton"><span></span></button>

@@ -19,7 +19,7 @@
   $db['host'] = "localhost";  // DB server's url
   $db['user'] = "daichi";
   $db['pass'] = "yoshitake";
-  $db['dbname'] = "mai-archive";
+  $db['dbname'] = "aktiva-archive";
 */
 
   $db['host'] = "host";  // DB sever's url
@@ -71,7 +71,7 @@ echo '
 				<ul id="menu">
 					<li><a href="">USER ID: '. $userid .'</a></li>
 					<li><a href="">アーカイブリスト</a></li>
-					<li><a href="">Mai-Archiveについて</a></li>
+					<li><a href="">Aktiva-Archiveについて</a></li>
 					<li><a href="logout.php">ログアウト</a></li>
 				</ul>
 				<button id="menubutton"><span></span></button>
