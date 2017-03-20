@@ -56,7 +56,8 @@ if (!isset($_SESSION["USERID"])) {
     while ($row = $result->fetch_assoc()) { 
       echo '<p>' . $row['artist'];
       echo ' - ' . $row['song'] . '</p>';
-/*      echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $row['url'] .'" frameborder="0" allowfullscreen></iframe></p><hr />';*/
+//      echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $row['url'] .'" frameborder="0" allowfullscreen></iframe>';
+      echo '</p><hr />';
     }
   
 ?>
