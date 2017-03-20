@@ -3,7 +3,7 @@
   $db['host'] = "localhost";  // DBサーバのurl
   $db['user'] = "daichi";
   $db['pass'] = "yoshitake";
-  $db['dbname'] = "mai-archive";
+  $db['dbname'] = "aktiva-archive";
 */
 
 
