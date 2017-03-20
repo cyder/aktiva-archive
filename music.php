@@ -60,6 +60,7 @@ echo '
 $query = "SELECT * FROM music WHERE music_id = '" . $musicid ."';";
 $result = $mysqli->query($query);
 $row = $result->fetch_assoc();
+$video = $row["video_url"];
 
 echo '
 <section class="each_menu">
@@ -69,7 +70,7 @@ echo '
       <img src="img/music/' . $musicid . '.jpg">
     </div>
       <div class="youtube_video">
-      <iframe src="https://www.youtube.com/embed/' . $row["video_url"] .'" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/' . $video .'" frameborder="0" allowfullscreen></iframe>
       </div>
   </div>
 </section>';
@@ -81,7 +82,7 @@ echo '
     echo '<section class="each_menu">
     <div class="wrap">
       <div class="left_menu_music">
-        <a href="./video.php?id='. $row["history_id"] .'"></a><img src="http://i.ytimg.com/vi/'. $row["video_url"] .'/maxresdefault.jpg">
+        <a href="./video.php?id='. $row["history_id"] .'"></a><img src="http://i.ytimg.com/vi/'. $video .'/maxresdefault.jpg">
       </div>
       <div class="right_menu_music">
         <p>'.$row["date"].'</p>
