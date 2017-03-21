@@ -109,7 +109,9 @@ echo '
   }
 ?>
 	<!-- Script -->
-	<script src="js/lib/jquery.min.js"></script>
-	<script src="js/drawerNav.js"></script>
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="js/lib/Chart.js"></script>
+  <script src="js/drawerNav.js"></script>
+  <script src="js/myChart.js"></script>
 </body>
 </html>
