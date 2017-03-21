@@ -97,7 +97,7 @@ echo '
       </div>
       <div class="right_menu_music">
         <p>'.date_format($row["date"], "Y-m-d H:i:s").'</p>
-        <h1>Score: ' . $row["score"] .'</h1>
+        <h1>Score: ' . $row["score"] .'点</h1>
       </div>
     </div>
   </section>';
