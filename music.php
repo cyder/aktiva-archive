@@ -102,7 +102,7 @@ echo '
           </div>
         </div>
         <div class="right_menu_music">
-          <p>'.date_format($row["date"], "Y-m-d<br>H:i:s").'</p>
+          <p>'.date_format($row["date"], "Y-m-d").'<br>'.date_format($row["date"], "H:i:s").</p>
         </div>
       </div>
     </section>';
