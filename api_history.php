@@ -22,7 +22,7 @@
 
   //Get the max number of music id
   $query = "SELECT MAX(music_id) FROM \"music\"";
-  $result = sqlsrv_query($conn, $query)
+  $result = sqlsrv_query($conn, $query);
   if($result === false) {
     print('<p>クエリーが失敗しました。</p>');
     foreach(sqlsrv_errors() as $error)
