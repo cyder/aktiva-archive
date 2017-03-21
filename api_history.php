@@ -22,7 +22,7 @@
 
   //Get the max number of music id
   $query = "SELECT MAX(music_id) FROM \"music\"";
-  $result = sqlsrv_query($conn, $query)
+  $result = sqlsrv_query($conn, $query);
   if($result === false) {
     print('<p>クエリーが失敗しました。</p>');
     foreach(sqlsrv_errors() as $error)
@@ -37,7 +37,7 @@
     $text = $i;
 
     $query = "SELECT * FROM \"history\" WHERE user_id LIKE '". $userid . "'  AND music_id LIKE '". $i ."' order by history_id DESC OFFSET 0 ROWS FETCH NEXT ". $num_fetch." ROWS ONLY";
-    $result = sqlsrv_query($conn, $query)
+    $result = sqlsrv_query($conn, $query);
     if($result === false) {
       print('<p>クエリーが失敗しました。</p>');
       foreach(sqlsrv_errors() as $error)
