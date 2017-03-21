@@ -91,16 +91,21 @@ echo '
 
   while($row = sqlsrv_fetch_array($result)) {
     echo '<section class="each_menu">
-    <div class="wrap">
-      <div class="left_menu_music">
-        <a href="./video.php?id='. $row["history_id"] .'"></a><img src="http://i.ytimg.com/vi/'. $video .'/maxresdefault.jpg">
+      <div class="wrap">
+        <a href="./video.php?id='. $row["history_id"] .'"></a>
+        <div class="left_menu_music">
+          <div class="chart">
+            <canvas class="myChart" width="200" height="200"></canvas>
+            <div class="count">
+              <em>' . $row["score"] .'</em>
+            </div>
+          </div>
+        </div>
+        <div class="right_menu_music">
+          <p>'.date_format($row["date"], "Y-m-d<br>H:i:s").'</p>
+        </div>
       </div>
-      <div class="right_menu_music">
-        <p>'.date_format($row["date"], "Y-m-d H:i:s").'</p>
-        <h1>Score: ' . $row["score"] .'点</h1>
-      </div>
-    </div>
-  </section>';
+    </section>';
   }
 ?>
 	<!-- Script -->
