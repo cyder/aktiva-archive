@@ -4,19 +4,6 @@ ini_set( 'display_errors', 1 ); //display error messages
 // セッション開始
 session_start();
 
-/*
-$db['host'] = "localhost";  // DBサーバのurl
-$db['user'] = "daichi";
-$db['pass'] = "yoshitake";
-$db['dbname'] = "aktiva-archive";
-*/
-
-  $db['host'] = "host";  // DB sever's url
-  $db['user'] = "user";
-  $db['pass'] = "pass";
-  $db['dbname'] = "dbname";
-
-
 // エラーメッセージの初期化
 $errorMessage = "";
 $db_hashed_pwd = "";
@@ -33,34 +20,44 @@ if (isset($_POST["login"])) {
   // ２．ユーザIDとパスワードが入力されていたら認証する
   if (!empty($_POST["userid"]) && !empty($_POST["password"])) {
     // mysqlへの接続
-    $mysqli = new mysqli($db['host'], $db['user'], $db['pass']);
-    if ($mysqli->connect_errno) {
-      print('<p>データベースへの接続に失敗しました。</p>' . $mysqli->connect_error);
+    $connectionInfo = [
+      "UID"                    => "atsushi@aktiva-archive",
+      "pwd"                    => "Shigoto4510",
+      "Database"               => "aktiva-archive-db",
+      "CharacterSet"           => "UTF-8"
+    ];
+    $serverName = "tcp:aktiva-archive.database.windows.net,1433";
+
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+    if($conn === false) {
+      print('<p>データベースへの接続に失敗しました。</p>');
+      foreach(sqlsrv_errors() as $error)
+        print("Error:  " . $error["message"]);
+      sqlsrv_close($conn);
       exit();
     }
-
-    // データベースの選択
-    $mysqli->select_db($db['dbname']);
 
     // 入力値のサニタイズ
-    $userid = $mysqli->real_escape_string($_POST["userid"]);
+    $userid = utf8_encode($_POST["userid"]);
 
     // クエリの実行
-    $query = "SELECT * FROM user WHERE user_id = '" . $userid . "'";
-    $result = $mysqli->query($query);
-    if (!$result) {
-      print('クエリーが失敗しました。' . $mysqli->error);
-      $mysqli->close();
+    $query = "SELECT * FROM \"user\" WHERE user_id LIKE '" . $userid . "'";
+    $result = sqlsrv_query($conn, $query);
+    if($result === false) {
+      print('<p>クエリーが失敗しました。</p>');
+      foreach(sqlsrv_errors() as $error)
+        print("Error:  " . $error["message"]);
+      sqlsrv_close($conn);
       exit();
     }
 
-    while ($row = $result->fetch_assoc()) {
+    while ($row = sqlsrv_fetch_array($result)) {
       // パスワード(暗号化済み）の取り出し
       $db_hashed_pwd = password_hash($row['password'], PASSWORD_DEFAULT);
     }
 
     // データベースの切断
-    $mysqli->close();
+    sqlsrv_close($conn);
 
     // ３．画面から入力されたパスワードとデータベースから取得したパスワードのハッシュを比較します。
     //if ($_POST["password"] == $pw) {

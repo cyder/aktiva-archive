@@ -13,32 +13,28 @@
 </head>
 
 <body>
-<?php 
+<?php
   session_start();
-/*
-  $db['host'] = "localhost";  // DB server's url
-  $db['user'] = "daichi";
-  $db['pass'] = "yoshitake";
-  $db['dbname'] = "aktiva-archive";
-*/
 
-  $db['host'] = "host";  // DB sever's url
-  $db['user'] = "user";
-  $db['pass'] = "pass";
-  $db['dbname'] = "dbname";
+  $connectionInfo = [
+    "UID"                    => "atsushi@aktiva-archive",
+    "pwd"                    => "Shigoto4510",
+    "Database"               => "aktiva-archive-db",
+    "CharacterSet"           => "UTF-8"
+  ];
+  $serverName = "tcp:aktiva-archive.database.windows.net,1433";
 
+  $conn = sqlsrv_connect($serverName, $connectionInfo);
+  if($conn === false) {
+    print('<p>データベースへの接続に失敗しました。</p>');
+    foreach(sqlsrv_errors() as $error)
+      print("Error:  " . $error["message"]);
+    sqlsrv_close($conn);
+    exit();
+  }
 
-
-  $mysqli = new mysqli($db['host'], $db['user'], $db['pass']);
-  if ($mysqli->connect_errno) {
-      print('<p>データベースへの接続に失敗しました。</p>' . $mysqli->connect_error);
-      exit();
-    }
-  $mysqli->query("SET NAMES utf8");
-  $mysqli->select_db($db['dbname']);
-
-  $userid = $_SESSION["USERID"];
-  $musicid = $_GET["id"];
+  $userid = utf8_encode($_SESSION["USERID"]);
+  $musicid = utf8_encode($_GET["id"]);
 
 echo '
 <header>
@@ -57,9 +53,17 @@ echo '
 </header>
 <section id="header-back"></section>';
 
-$query = "SELECT * FROM music WHERE music_id = '" . $musicid ."';";
-$result = $mysqli->query($query);
-$row = $result->fetch_assoc();
+$query = "SELECT * FROM \"music\" WHERE music_id LIKE '" . $musicid ."';";
+$result = sqlsrv_query($conn, $query);
+if($result === false) {
+  print('<p>クエリーが失敗しました。</p>');
+  foreach(sqlsrv_errors() as $error)
+    print("Error:  " . $error["message"]);
+  sqlsrv_close($conn);
+  exit();
+}
+$row = sqlsrv_fetch_array($result);
+$video = $row["video_url"];
 
 echo '
 <section class="each_menu">
@@ -69,24 +73,34 @@ echo '
       <img src="img/music/' . $musicid . '.jpg">
     </div>
       <div class="youtube_video">
-      <iframe src="https://www.youtube.com/embed/' . $row["video_url"] .'" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/' . $video .'" frameborder="0" allowfullscreen></iframe>
       </div>
   </div>
 </section>';
 
 
-	$query = "SELECT * FROM history WHERE music_id = '" . $musicid ."' AND user_id = '". $userid ."' order by history_id desc;";
-  $result = $mysqli->query($query);
-  while ($row = $result->fetch_assoc()) { 
+  $query = "SELECT * FROM \"history\" WHERE music_id LIKE '" . $musicid ."' AND user_id LIKE '". $userid ."' order by history_id desc;";
+  $result = sqlsrv_query($conn, $query);
+  if($result === false) {
+    print('<p>クエリーが失敗しました。</p>');
+    foreach(sqlsrv_errors() as $error)
+      print("Error:  " . $error["message"]);
+    sqlsrv_close($conn);
+    exit();
+  }
+
+  while($row = sqlsrv_fetch_array($result)) {
     echo '<section class="each_menu">
     <div class="wrap">
       <div class="left_menu_music">
-        <a href="./video.php?id='. $row["history_id"] .'"></a><img src="http://i.ytimg.com/vi/'. $row["video_url"] .'/maxresdefault.jpg">
+        <a href="./video.php?id='. $row["history_id"] .'"></a><img src="http://i.ytimg.com/vi/'. $video .'/maxresdefault.jpg">
       </div>
       <div class="right_menu_music">
-        <p>'.$row["date"].'</p>
-        <h1>Score: ' . $row["score"] .'</h1>';
-  echo '</div></div></section>';
+        <p>'.date_format($row["date"], "Y-m-d H:i:s").'</p>
+        <h1>Score: ' . $row["score"] .'</h1>
+      </div>
+    </div>
+  </section>';
   }
 ?>
 	<!-- Script -->
