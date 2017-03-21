@@ -13,32 +13,28 @@
 </head>
 
 <body>
-<?php 
+<?php
   session_start();
-/*
-  $db['host'] = "localhost";  // DB server's url
-  $db['user'] = "daichi";
-  $db['pass'] = "yoshitake";
-  $db['dbname'] = "aktiva-archive";
-*/
 
-  $db['host'] = "host";  // DB sever's url
-  $db['user'] = "user";
-  $db['pass'] = "pass";
-  $db['dbname'] = "dbname";
+  $connectionInfo = [
+    "UID"                    => "atsushi@aktiva-archive",
+    "pwd"                    => "Shigoto4510",
+    "Database"               => "aktiva-archive-db",
+    "CharacterSet"           => "UTF-8"
+  ];
+  $serverName = "tcp:aktiva-archive.database.windows.net,1433";
 
+  $conn = sqlsrv_connect($serverName, $connectionInfo);
+  if($conn === false) {
+    print('<p>データベースへの接続に失敗しました。</p>');
+    foreach(sqlsrv_errors() as $error)
+      print("Error:  " . $error["message"]);
+    sqlsrv_close($conn);
+    exit();
+  }
 
-
-  $mysqli = new mysqli($db['host'], $db['user'], $db['pass']);
-  if ($mysqli->connect_errno) {
-      print('<p>データベースへの接続に失敗しました。</p>' . $mysqli->connect_error);
-      exit();
-    }
-  $mysqli->query("SET NAMES utf8");
-  $mysqli->select_db($db['dbname']);
-
-  $userid = $_SESSION["USERID"];
-  $historyid = $_GET["id"];
+  $userid = utf8_encode($_SESSION["USERID"]);
+  $historyid = utf8_encode($_GET["id"]);
 
 echo '
 <header>
@@ -59,13 +55,27 @@ echo '
 
 
 
-	$query = "SELECT * FROM history WHERE history_id = '" . $historyid ."' AND user_id = '". $userid ."';";
-  $result = $mysqli->query($query);
-  $row = $result->fetch_assoc();
+	$query = "SELECT * FROM \"history\" WHERE history_id LIKE '" . $historyid ."' AND user_id LIKE '". $userid ."';";
+  $result = sqlsrv_query($conn, $query);
+  if($result === false) {
+    print('<p>クエリーが失敗しました。</p>');
+    foreach(sqlsrv_errors() as $error)
+      print("Error:  " . $error["message"]);
+    sqlsrv_close($conn);
+    exit();
+  }
+  $row = sqlsrv_fetch_array($result);
 
-  $query = "SELECT * FROM music WHERE music_id = '" . $row["music_id"] ."';";
-  $result = $mysqli->query($query);
-  $row = $result->fetch_assoc();
+  $query = "SELECT * FROM \"music\" WHERE music_id LIKE '" . $row["music_id"] ."';";
+  $result = sqlsrv_query($conn, $query);
+  if($result === false) {
+    print('<p>クエリーが失敗しました。</p>');
+    foreach(sqlsrv_errors() as $error)
+      print("Error:  " . $error["message"]);
+    sqlsrv_close($conn);
+    exit();
+  }
+  $row = sqlsrv_fetch_array($result);
 
   echo '<section class="each_menu"><div class="wrap">';
   echo '<a href="./music.php?id='. $row["music_id"] .'"></a>';
@@ -73,9 +83,16 @@ echo '
   echo '</div></section>';
 
 
-  $query = "SELECT * FROM history WHERE history_id = '" . $historyid ."' AND user_id = '". $userid ."';";
-  $result = $mysqli->query($query);
-  $row = $result->fetch_assoc();
+  $query = "SELECT * FROM \"history\" WHERE history_id LIKE '" . $historyid ."' AND user_id LIKE '". $userid ."';";
+  $result = sqlsrv_query($conn, $query);
+  if($result === false) {
+    print('<p>クエリーが失敗しました。</p>');
+    foreach(sqlsrv_errors() as $error)
+      print("Error:  " . $error["message"]);
+    sqlsrv_close($conn);
+    exit();
+  }
+  $row = sqlsrv_fetch_array($result);
 
   echo '<section class="each_menu"><div class="wrap">';
 //  echo '<div class="youtube_video">
@@ -90,7 +107,7 @@ echo '
 
   echo '<section class="each_menu"><div class="wrap">';
   $pieces = explode("/", $row["part"]);
-  for ($i=0; $i < sizeof($pieces) - 1 ; $i+=2) { 
+  for ($i=0; $i < sizeof($pieces) - 1 ; $i+=2) {
     echo "<h1>".$pieces[$i].": ".$pieces[$i+1]."</h1>";
   }
   echo '</div></section>';
@@ -99,7 +116,7 @@ echo '
   echo '<section class="each_menu"><div class="wrap">';
   $pieces = explode("/", $row["body"]);
   $body = array("右腕", "左腕", "右足", "左足");
-  for ($i=0; $i < sizeof($pieces); $i++) { 
+  for ($i=0; $i < sizeof($pieces); $i++) {
     echo "<h1>".$body[$i].": ".$pieces[$i]."</h1>";
   }
   echo '</div></section>';
