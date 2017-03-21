@@ -78,9 +78,9 @@ echo '
   $row = $result->fetch_assoc();
 
   echo '<section class="each_menu"><div class="wrap">';
-  echo '<div class="youtube_video">
-        <iframe src="https://www.youtube.com/embed/' . $row["video_url"] .'" frameborder="0" allowfullscreen></iframe>
-        </div>';
+//  echo '<div class="youtube_video">
+//        <iframe src="https://www.youtube.com/embed/' . $row["video_url"] .'" frameborder="0" allowfullscreen></iframe>
+//        </div>';
   echo '</div></section>';
 
   echo '<section class="each_menu"><div class="wrap">';
